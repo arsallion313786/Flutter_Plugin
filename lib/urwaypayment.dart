@@ -149,14 +149,14 @@ class Payment {
 
     /**
      * Connectivity is checked as there is server call*/
-    var connectivityResult = await (Connectivity().checkConnectivity());
+    final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
     //print(connectivityResult);
-    if (connectivityResult == ConnectivityResult.mobile) {
+    if (connectivityResult.contains(ConnectivityResult.mobile)) {
 
       final ipv4 = await Ipify.ipv4();
        ipAdd = ipv4;
 
-    } else if (connectivityResult == ConnectivityResult.wifi) {
+    } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
 
       final ipv4 = await Ipify.ipv4();
       ipAdd = ipv4;
